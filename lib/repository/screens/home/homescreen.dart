@@ -1,260 +1,233 @@
-import 'package:bodega_delivery/repository/screens/bottomnav/bottomnavscreen.dart';
-import 'package:bodega_delivery/repository/widgets/uihelper.dart';
 import 'package:flutter/material.dart';
+import 'package:bodega_delivery/repository/widgets/uihelper.dart';
+
+import '../profile/profilescreen.dart';
 
 class HomeScreen extends StatelessWidget {
   TextEditingController searchController = TextEditingController();
-  var data = [
-    {"img": "image 50.png", "text": "Lights, Diyas \n & Candles"},
-    {"img": "image 51.png", "text": "Diwali \n Gifts"},
-    {"img": "image 52.png", "text": "Appliances  \n & Gadgets"},
-    {"img": "image 53.png", "text": "Home \n & Living"}
-  ];
-  var categroy = [
-    {"img": "image 54.png", "text": "Golden Glass\n Wooden Lid Candle (Oudh)"},
-    {"img": "image 57.png", "text": "Royal Gulab Jamun\n By Bikano"},
-    {"img": "image 63.png", "text": "Golden Glass\n Wooden Lid Candle (Oudh)"},
-  ];
-  var grocerykitchen = [
-    {"img": "image 41.png", "text": "Vegetables & \nFruits"},
-    {"img": "image 42.png", "text": "Atta, Dal & \nRice"},
-    {"img": "image 43.png", "text": "Oil, Ghee & \nMasala"},
-    {"img": "image 44 (1).png", "text": "Dairy, Bread & \nMilk"},
-    {"img": "image 45 (1).png", "text": "Biscuits & \nBakery"}
-  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [
-        SizedBox(
-          height: 40,
-        ),
-        Stack(
-          children: [
-            Container(
-              height: 190,
-              width: double.infinity,
-              color: Color(0XFFFFFF),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 30,
-                  ),
-
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      UiHelper.CustomText(
-                          text: "16 minutes",
-                          color: Color(0XFF000000),
-                          fontweight: FontWeight.bold,
-                          fontsize: 20,
-                          fontfamily: "bold")
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      UiHelper.CustomText(
-                          text: "HOME ",
-                          color: Color(0XFF000000),
-                          fontweight: FontWeight.bold,
-                          fontsize: 14),
-                      UiHelper.CustomText(
-                          text: "- Priyansh , Agra ,UP",
-                          color: Color(0XFF000000),
-                          fontweight: FontWeight.bold,
-                          fontsize: 14)
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              right: 20,
-              bottom: 120,
-              child: CircleAvatar(
-                radius: 15,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Icons.person,
-                  color: Colors.black,
-                  size: 20,
-                ),
-              ),
-            ),
-            Positioned(
-                bottom: 30,
-                left: 20,
-                child: UiHelper.CustomTextField(controller: searchController))
-          ],
-        ),
-        Container(
-          height: 1,
-          width: double.infinity,
-          color: Colors.white,
-        ),
-
-        Stack(
+      backgroundColor: Color(0XFFF5F5F5),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-            Container(
-            height: 595,
-            width: double.infinity,
-            color: Color(0XFF221662),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 30,
-                ),
-
-                Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ListView.builder(
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(
-                            left: 5, right: 5, top: 1, bottom: 1),
-                        child: Container(
-                          height: 108,
-                          width: 86,
-                          decoration: BoxDecoration(
-                              color: Color(0XFFD9EBEB),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Column(
-                            children: [
-                              UiHelper.CustomText(
-                                  text: data[index]["text"].toString(),
-                                  color: Colors.black,
-                                  fontweight: FontWeight.bold,
-                                  fontsize: 10),
-                              UiHelper.CustomImage(
-                                  img: data[index]["img"].toString())
-                            ],
+              // Header
+              Stack(
+                children: [
+                     Column(
+                      children: [
+                        SizedBox(height: 30),
+                        Center(
+                          child: UiHelper.CustomText(
+                            text: "BOdega",
+                            color: Color(0XFF000000),
+                            fontweight: FontWeight.bold,
+                            fontsize: 20,
+                            fontfamily: "bold",
                           ),
+                        ),
+                      ],
+                    ),
+
+
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 300),
+                          pageBuilder: (context, animation, secondaryAnimation) => ProfileScreen(),
+                          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                            const begin = Offset(-1.0, 0.0); // From right
+                            const end = Offset.zero;
+                            final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: Curves.easeInOut));
+                            return SlideTransition(
+                              position: animation.drive(tween),
+                              child: child,
+                            );
+                          },
                         ),
                       );
                     },
-                    itemCount: data.length,
-                    scrollDirection: Axis.horizontal,
+                    child:Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 22),
+
+                      child: CircleAvatar(
+                      radius: 18,
+                      backgroundColor: Color(0XFF221662),
+                      child: Icon(Icons.person, color: Colors.white),
+                    ),
+                    ),
                   ),
+                ],
+              ),
+
+              SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),
+                child: UiHelper.CustomTextField(
+                  controller: searchController,
                 ),
               ),
-        Expanded(
-          flex: 2,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        clipBehavior: Clip.antiAlias,
-                        height: 108,
-                        width: 93,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: UiHelper.CustomImage(
-                            img: categroy[index]["img"].toString()),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 20),
-                      child: UiHelper.CustomText(
-                          text: categroy[index]["text"].toString(),
-                          color: Colors.white,
-                          fontweight: FontWeight.bold,
-                          fontsize: 8),
-                    ),
-                    SizedBox(height: 5,),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 40),
-                      child: Row(children: [
-                        UiHelper.CustomImage(img: "timer 4.png"),
-                        UiHelper.CustomText(text: "16 MINS", color: Color(0XFF9C9C9C), fontweight: FontWeight.normal, fontsize: 10)
-                      ],),
-                    ),
-                    SizedBox(height: 5,),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 60),
-                      child: Row(children: [
-                        UiHelper.CustomImage(img: "image 50 (1).png"),
-                        UiHelper.CustomText(text: "79", color: Color(0XFF9C9C9C), fontweight: FontWeight.bold, fontsize: 15)
 
-                      ],),
-                    )
-                  ],
-                );
-              },
-              itemCount: categroy.length,
-              scrollDirection: Axis.horizontal,
-            ),
-          ),
-        ),
-        Row(
-          children: [
-            SizedBox(
-              width: 20,
-            ),
-            UiHelper.CustomText(
-                text: "Grocery & Kitchen",
-                color: Colors.white,
-                fontweight: FontWeight.bold,
-                fontsize: 14,
-                fontfamily: "bold")
-          ],
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Expanded(
-          flex: 1,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return Column(
+              SizedBox(height: 20),
+              Text("Sales Offers", style: _sectionTitle),
+              SizedBox(height: 20),
+              SizedBox(
+                height: 186,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Container(
-                        height: 78,
-                        width: 71,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Color(0XFFD9EBEB)),
-                        child: UiHelper.CustomImage(
-                            img: grocerykitchen[index]["img"].toString()),
-                      ),
-                    ),
-                    UiHelper.CustomText(
-                        text: grocerykitchen[index]["text"].toString(),
-                        color: Colors.white,
-                        fontweight: FontWeight.normal,
-                        fontsize: 10)
+                    _buildSaleCard("assets/images/buy1get1free.png", "Grocery Sale"),
+                    _buildSaleCard("assets/images/festival_sale.png", "Festival Sale"),
+                    _buildSaleCard("assets/images/potato.png", "50% Off"),
                   ],
-                );
-              },
-              itemCount: grocerykitchen.length,
-              scrollDirection: Axis.horizontal,
-            ),
+                ),
+              ),
+
+              SizedBox(height: 24),
+              Text("Categories", style: _sectionTitle),
+              SizedBox(height: 24),
+              SizedBox(
+                height: 130,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    _buildCategoryCard("assets/images/fruit.png", "Fruits"),
+                    _buildCategoryCard("assets/images/vegetable.png", "Vegetables"),
+                    _buildCategoryCard("assets/images/snack.png", "Snacks"),
+                    _buildCategoryCard("assets/images/milk.png", "dairy"),
+
+                  ],
+                ),
+              ),
+
+        SizedBox(height: 24),
+        Text("Featured Products", style: _sectionTitle),
+        SizedBox(height: 12),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              _buildProductCard(
+                title: "Apple",
+                price: "₹120 / Kg",
+                imageUrl: "assets/images/apple.png",
+              ),
+              SizedBox(width: 12),
+              _buildProductCard(
+                title: "Organic tomato",
+                price: "₹299 / kg",
+                imageUrl: "assets/images/tomato.png",
+              ),
+              SizedBox(width: 12),
+              _buildProductCard(
+                title: "Whole Milk",
+                price: "₹349 / Liter",
+                imageUrl: "assets/images/milk.png",
+              ),
+              SizedBox(width: 12),
+              _buildProductCard(
+                title: "Potato",
+                price: "₹49 / Kg",
+                imageUrl: "assets/images/potato.png",
+              ),
+              SizedBox(width: 12),
+              _buildProductCard(
+                title: "Whole Milk",
+                price: "₹349 / Liter",
+                imageUrl: "assets/images/milk.png",
+              ),
+
+            ],
           ),
         ),
-              ],
-            ),
-            ),
+
             ],
+          ),
         ),
-      ],
-    )
-        );
+      ),
+    );
+  }
+
+  final TextStyle _sectionTitle = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.bold,
+  );
+
+  Widget _buildSaleCard(String imageUrl, String label) {
+    return Container(
+      width: 226,
+      margin: EdgeInsets.only(right: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(imageUrl, height: 139, width: 286, fit: BoxFit.cover),
+          ),
+          SizedBox(height: 6),
+          Text(label, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCategoryCard(String imageUrl, String label) {
+    return Container(
+      width: 80,
+      margin: EdgeInsets.only(right: 12),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset(imageUrl, height: 80, width: 80, fit: BoxFit.cover),
+          ),
+          SizedBox(height: 12),
+          Text(label, style: TextStyle(fontSize: 15)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildProductCard({
+    required String title,
+    required String price,
+    required String imageUrl,
+  }) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.asset(imageUrl, height: 60, width: 60, fit: BoxFit.cover),
+          SizedBox(height: 8),
+          Text(title, style: TextStyle(fontWeight: FontWeight.w600)),
+          SizedBox(height: 4),
+          Text(price, style: TextStyle(color: Color(0XFF221662))),
+          SizedBox(height: 6),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text("Add"),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0XFF221662),
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              minimumSize: Size(80, 36),
+              padding: EdgeInsets.symmetric(horizontal: 12),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

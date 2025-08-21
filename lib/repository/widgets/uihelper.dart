@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UiHelper {
-  static CustomImage({required String img}) {
+  static CustomImage({required String img, required Color color}) {
     return Image.asset("assets/images/$img");
   }
 
@@ -15,7 +15,7 @@ class UiHelper {
       text,
       style: TextStyle(
           fontSize: fontsize,
-          fontFamily: fontfamily ?? "Akatab",
+          fontFamily:  "Akatab",
           fontWeight: fontweight,
           color: color),
     );
@@ -25,18 +25,14 @@ class UiHelper {
       height: 40,
       width: 360,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.white,
-        border: Border.all(
-          color: Color(0XFFC5C5C5)
-        )
+        borderRadius: BorderRadius.circular(6),
+        color: Color(0XFFE8E8F2),
       ),
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
           hintText: "Search 'ice-cream'",
           prefixIcon: Image.asset("assets/images/search.png"),
-          suffixIcon: Image.asset("assets/images/mic 1.png"),
           border: InputBorder.none
         ),
       ),
