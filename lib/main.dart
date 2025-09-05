@@ -1,3 +1,11 @@
+import 'package:bodega_delivery/repository/screens/location/deliverylocdarkscreen.dart';
+import 'package:bodega_delivery/repository/screens/location/deliverylocscreen.dart';
+import 'package:bodega_delivery/repository/screens/payment/bowalletloading.dart';
+import 'package:bodega_delivery/repository/screens/payment/paymentcompletedscreen.dart';
+import 'package:bodega_delivery/repository/screens/personalpref/personalprefdarkscreen.dart';
+import 'package:bodega_delivery/repository/screens/personalpref/personalprefscreen.dart';
+import 'package:bodega_delivery/repository/screens/profile/profiledarkscreen.dart';
+import 'package:bodega_delivery/repository/screens/profile/profilescreen.dart';
 import 'package:bodega_delivery/repository/screens/splash/splashscreen.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +27,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Color(0XFF221662)),
           useMaterial3: false,
         ),
-        home: SplashScreen(),
+        home:SplashScreen(),
     );
   }
 }

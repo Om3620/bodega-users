@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:bodega_delivery/repository/screens/profile/profilescreen.dart';
+import 'package:bodega_delivery/repository/screens/profile/profiledarkscreen.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/uihelper.dart';
 
@@ -12,12 +12,12 @@ enum DeliveryStatus {
   deliverystart,
 }
 
-class OrderStatusScreen extends StatefulWidget {
+class OrderStatusDarkScreen extends StatefulWidget {
   @override
-  _OrderStatusScreenState createState() => _OrderStatusScreenState();
+  _OrderStatusDarkScreenState createState() => _OrderStatusDarkScreenState();
 }
 
-class _OrderStatusScreenState extends State<OrderStatusScreen> {
+class _OrderStatusDarkScreenState extends State<OrderStatusDarkScreen> {
   DeliveryStatus status = DeliveryStatus.assigning;
 
   @override
@@ -44,59 +44,51 @@ class _OrderStatusScreenState extends State<OrderStatusScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0XFFF5F5F5),
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Column(
           children: [
             // ✅ Top Logo + Avatar
-            Stack(
-              children: [
-                Column(
-                  children: [
-                    SizedBox(height: 30),
-                    Center(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              child: Stack(
+                children: [
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 30),
                       child: UiHelper.CustomText(
                         text: "BOdega",
-                        color: Color(0XFF000000),
+                        color: Colors.white,
                         fontweight: FontWeight.bold,
                         fontsize: 20,
                         fontfamily: "bold",
                       ),
                     ),
-                  ],
-                ),
-
-
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                        transitionDuration: Duration(milliseconds: 300),
-                        pageBuilder: (context, animation, secondaryAnimation) => ProfileScreen(),
-                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                          const begin = Offset(-1.0, 0.0); // From right
-                          const end = Offset.zero;
-                          final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: Curves.easeInOut));
-                          return SlideTransition(
-                            position: animation.drive(tween),
-                            child: child,
-                          );
-                        },
+                  ),
+                  Positioned(
+                    left: 15,
+                    top: 16,
+                    child: GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          transitionDuration: const Duration(milliseconds: 300),
+                          pageBuilder: (_, __, ___) => ProfileDarkScreen(),
+                          transitionsBuilder: (_, animation, __, child) {
+                            final tween = Tween(begin: const Offset(-1.0, 0.0), end: Offset.zero)
+                                .chain(CurveTween(curve: Curves.easeInOut));
+                            return SlideTransition(position: animation.drive(tween), child: child);
+                          },
+                        ),
                       ),
-                    );
-                  },
-                  child:Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 22),
-
-                    child: CircleAvatar(
-                      radius: 18,
-                      backgroundColor: Color(0XFF544F94),
-                      child: Icon(Icons.person, color: Colors.white),
+                      child: CircleAvatar(
+                        backgroundColor: Color(0XFF544F94),
+                        child: Icon(Icons.person,color: Colors.black),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
 
             // ✅ Main Map + Overlays
@@ -111,10 +103,15 @@ class _OrderStatusScreenState extends State<OrderStatusScreen> {
                     ),
                   ),
 
-              Padding(
-                      padding: const EdgeInsets.all(16.0),
-                        child: Text('Order Status'),
-              ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text('Order Status',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                    ),
+                    ),
+                  ),
 
 
                   Align(

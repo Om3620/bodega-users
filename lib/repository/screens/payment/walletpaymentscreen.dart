@@ -1,5 +1,7 @@
 import 'package:bodega_delivery/repository/screens/Order/orderhistoryreorderscreen.dart';
-import 'package:bodega_delivery/repository/screens/payment/walletpaymentscreen.dart';
+import 'package:bodega_delivery/repository/screens/payment/bodegawalletscreen.dart';
+import 'package:bodega_delivery/repository/screens/payment/linkedpaymentscreen.dart';
+import 'package:bodega_delivery/repository/screens/profile/profilescreen.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/uihelper.dart';
@@ -8,25 +10,19 @@ import '../helpsupport/helpsupportscreen.dart';
 import '../location/deliveryadd.dart';
 import '../payment/payment.dart';
 import '../personalpref/personalprefscreen.dart';
-import 'acc_overview.dart';
 
-class ProfileScreen extends StatelessWidget {
+
+class WalletPaymentScreen extends StatelessWidget {
   final List<String> options = [
-    "Account Overview",
-    "Delivery Address",
-    "Order History & Reorders",
-    "Wallet & Payments",
-    "Help & Support",
-    "Personal Preferences",
+    "Linked Payments(UPI,Cards,COD)",
+    "BOdega Wallet balance",
+
   ];
 
   final List<Widget> screens = [
-    AccOverviewScreen(),
-    DeliveryAddScreen(),
-    OrderHistoryReorderScreen(),
-    WalletPaymentScreen(),
-    HelpSupportScreen(),
-    PersonalPrefScreen(),
+    LinkedPaymentScreen(),
+    BOdegaWalletScreen(),
+
   ];
 
   @override
@@ -39,37 +35,60 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Top Logo + Avatar
               Stack(
                 children: [
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 30),
-                      child: UiHelper.CustomText(
-                        text: "BOdega",
-                        color: Color(0XFF000000),
-                        fontweight: FontWeight.bold,
-                        fontsize: 20,
-                        fontfamily: "bold",
+                  Column(
+                    children: [
+                      SizedBox(height: 30),
+                      Center(
+                        child: UiHelper.CustomText(
+                          text: "BOdega",
+                          color: Color(0XFF000000),
+                          fontweight: FontWeight.bold,
+                          fontsize: 20,
+                          fontfamily: "bold",
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 22),
-                    child: CircleAvatar(
-                      backgroundColor: Color(0XFF544F94),
-                      child: Icon(Icons.person, size:30,color: Colors.white),
+
+
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 300),
+                          pageBuilder: (context, animation, secondaryAnimation) => ProfileScreen(),
+                          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                            const begin = Offset(-1.0, 0.0); // From right
+                            const end = Offset.zero;
+                            final tween = Tween(begin: begin, end: end).chain(CurveTween(curve: Curves.easeInOut));
+                            return SlideTransition(
+                              position: animation.drive(tween),
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child:Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 22),
+
+                      child: CircleAvatar(
+                        radius: 18,
+                        backgroundColor: Color(0XFF544F94),
+                        child: Icon(Icons.person, color: Colors.white),
+                      ),
                     ),
                   ),
                 ],
               ),
-
               const SizedBox(height: 30),
 
               // User Profile Title
               Text(
-                "User Profile",
+                "Wallet & Payments",
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,

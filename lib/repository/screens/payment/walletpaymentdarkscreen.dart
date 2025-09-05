@@ -1,5 +1,6 @@
 import 'package:bodega_delivery/repository/screens/Order/orderhistoryreorderscreen.dart';
-import 'package:bodega_delivery/repository/screens/payment/walletpaymentscreen.dart';
+import 'package:bodega_delivery/repository/screens/payment/bodegawalletdarkscreen.dart';
+import 'package:bodega_delivery/repository/screens/payment/linkedpaymentdarkscreen.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/uihelper.dart';
@@ -8,31 +9,25 @@ import '../helpsupport/helpsupportscreen.dart';
 import '../location/deliveryadd.dart';
 import '../payment/payment.dart';
 import '../personalpref/personalprefscreen.dart';
-import 'acc_overview.dart';
 
-class ProfileScreen extends StatelessWidget {
+
+class WalletPaymentDarkScreen extends StatelessWidget {
   final List<String> options = [
-    "Account Overview",
-    "Delivery Address",
-    "Order History & Reorders",
-    "Wallet & Payments",
-    "Help & Support",
-    "Personal Preferences",
+    "Linked Payments(UPI,Cards,COD)",
+    "BOdega Wallet balance",
+
   ];
 
   final List<Widget> screens = [
-    AccOverviewScreen(),
-    DeliveryAddScreen(),
-    OrderHistoryReorderScreen(),
-    WalletPaymentScreen(),
-    HelpSupportScreen(),
-    PersonalPrefScreen(),
+    LinkedPaymentDarkScreen(),
+    BOdegaWalletDarkScreen(),
+
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFFF5F5F5),
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -47,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 30),
                       child: UiHelper.CustomText(
                         text: "BOdega",
-                        color: Color(0XFF000000),
+                        color: Colors.white,
                         fontweight: FontWeight.bold,
                         fontsize: 20,
                         fontfamily: "bold",
@@ -58,7 +53,7 @@ class ProfileScreen extends StatelessWidget {
                     padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 22),
                     child: CircleAvatar(
-                      backgroundColor: Color(0XFF544F94),
+                      backgroundColor: Color(0xFF221662),
                       child: Icon(Icons.person, size:30,color: Colors.white),
                     ),
                   ),
@@ -69,9 +64,10 @@ class ProfileScreen extends StatelessWidget {
 
               // User Profile Title
               Text(
-                "User Profile",
+                "Wallet & Payments",
                 style: TextStyle(
                   fontSize: 22,
+                  color:Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -100,12 +96,12 @@ class ProfileScreen extends StatelessWidget {
                           padding: EdgeInsets.symmetric(
                               vertical: 16, horizontal: 16),
                           decoration: BoxDecoration(
-                            color: Color(0XFFE8E8F2),
+                            color: Color(0XFF353535),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
                             options[index],
-                            style: TextStyle(fontSize: 18,color:Color(0XFF544F94)),
+                            style: TextStyle(fontSize: 18,color:Colors.white),
                           ),
                         ),
                       ),
@@ -122,7 +118,7 @@ class ProfileScreen extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF221662),
+                    backgroundColor: Colors.white,
                     padding: EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -132,7 +128,7 @@ class ProfileScreen extends StatelessWidget {
                     "Back",
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                 ),

@@ -33,7 +33,7 @@ class AccOverviewScreen extends StatelessWidget{
         padding:
         const EdgeInsets.symmetric(horizontal: 12, vertical: 22),
         child: CircleAvatar(
-          backgroundColor: Color(0xFF221662),
+          backgroundColor: Color(0XFF544F94),
           child: Icon(Icons.person,color: Colors.white),
         ),
       ),

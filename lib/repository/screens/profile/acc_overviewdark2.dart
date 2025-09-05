@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/uihelper.dart';
 
-class AccOverview2Screen extends StatelessWidget{
+class AccOverviewDark2Screen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFFF5F5F5),
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -21,7 +21,7 @@ class AccOverview2Screen extends StatelessWidget{
                       padding: const EdgeInsets.only(top: 30),
                       child: UiHelper.CustomText(
                         text: "BOdega",
-                        color: Color(0XFF000000),
+                        color: Colors.white,
                         fontweight: FontWeight.bold,
                         fontsize: 20,
                         fontfamily: "bold",
@@ -33,7 +33,7 @@ class AccOverview2Screen extends StatelessWidget{
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 22),
                     child: CircleAvatar(
                       backgroundColor: Color(0XFF544F94),
-                      child: Icon(Icons.person,color: Colors.white),
+                      child: Icon(Icons.person,color: Colors.black),
                     ),
                   ),
                 ],
@@ -46,30 +46,32 @@ class AccOverview2Screen extends StatelessWidget{
                 "Account Overview",
                 style: TextStyle(
                   fontSize: 26,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-    Padding(
-    padding:
-    const EdgeInsets.symmetric(vertical:20),
+              Padding(
+                padding:
+                const EdgeInsets.symmetric(vertical:20),
 
-    // Camera icon inside circle
-              child:Center(
-                child:CircleAvatar(
-                  radius: 80,
-                  backgroundColor: Colors.white,
-                  child: Icon(Icons.camera_alt, size: 50, color: Color(0XFF59578F)),
+                // Camera icon inside circle
+                child:Center(
+                  child:CircleAvatar(
+                    radius: 80,
+                    backgroundColor: Colors.black,
+                    child: Icon(Icons.camera_alt, size: 50, color: Color(0XFF59578F)),
+                  ),
                 ),
               ),
-    ),
               const SizedBox(height: 20),
 
               // Name field
               TextField(
                 decoration: InputDecoration(
                   hintText: "Name",
+                  hintStyle:TextStyle(color: Colors.white),
                   filled: true,
-                  fillColor: Color(0XFFE8E8F2),
+                  fillColor: Color(0XFF353535),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none,
@@ -86,8 +88,9 @@ class AccOverview2Screen extends StatelessWidget{
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                         hintText: "Mobile Number",
+                        hintStyle:TextStyle(color: Colors.white),
                         filled: true,
-                        fillColor: Color(0XFFE8E8F2),
+                        fillColor: Color(0XFF353535),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide.none,
@@ -117,8 +120,9 @@ class AccOverview2Screen extends StatelessWidget{
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   hintText: "E-Mail(Optional)",
+                  hintStyle:TextStyle(color: Colors.white),
                   filled: true,
-                  fillColor: Color(0XFFE8E8F2),
+                  fillColor: Color(0XFF353535),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: BorderSide.none,
@@ -136,7 +140,7 @@ class AccOverview2Screen extends StatelessWidget{
                     Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF221662),
+                    backgroundColor: Colors.white,
                     padding: EdgeInsets.symmetric(vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -146,7 +150,7 @@ class AccOverview2Screen extends StatelessWidget{
                     "Save",
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                 ),

@@ -1,15 +1,16 @@
+import 'package:bodega_delivery/repository/screens/profile/profiledarkscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:bodega_delivery/repository/widgets/uihelper.dart';
 
 import '../profile/profilescreen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeDarkScreen extends StatelessWidget {
   TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFFF5F5F5),
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(12),
@@ -19,20 +20,20 @@ class HomeScreen extends StatelessWidget {
               // Header
               Stack(
                 children: [
-                     Column(
-                      children: [
-                        SizedBox(height: 30),
-                        Center(
-                          child: UiHelper.CustomText(
-                            text: "BOdega",
-                            color: Color(0XFF000000),
-                            fontweight: FontWeight.bold,
-                            fontsize: 20,
-                            fontfamily: "bold",
-                          ),
+                  Column(
+                    children: [
+                      SizedBox(height: 30),
+                      Center(
+                        child: UiHelper.CustomText(
+                          text: "BOdega",
+                          color: Colors.white,
+                          fontweight: FontWeight.bold,
+                          fontsize: 20,
+                          fontfamily: "bold",
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
 
 
                   GestureDetector(
@@ -41,7 +42,7 @@ class HomeScreen extends StatelessWidget {
                         context,
                         PageRouteBuilder(
                           transitionDuration: Duration(milliseconds: 300),
-                          pageBuilder: (context, animation, secondaryAnimation) => ProfileScreen(),
+                          pageBuilder: (context, animation, secondaryAnimation) => ProfileDarkScreen(),
                           transitionsBuilder: (context, animation, secondaryAnimation, child) {
                             const begin = Offset(-1.0, 0.0); // From right
                             const end = Offset.zero;
@@ -58,10 +59,10 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 22),
 
                       child: CircleAvatar(
-                      radius: 18,
-                      backgroundColor: Color(0XFF544F94),
-                      child: Icon(Icons.person, color: Colors.white),
-                    ),
+                        radius: 18,
+                        backgroundColor: Color(0XFF544F94),
+                        child: Icon(Icons.person, color: Colors.black),
+                      ),
                     ),
                   ),
                 ],
@@ -107,46 +108,46 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-        SizedBox(height: 24),
-        Text("Featured Products", style: _sectionTitle),
-        SizedBox(height: 12),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              _buildProductCard(
-                title: "Apple",
-                price: "₹120 / Kg",
-                imageUrl: "assets/images/apple.png",
-              ),
-              SizedBox(width: 12),
-              _buildProductCard(
-                title: "Organic tomato",
-                price: "₹299 / kg",
-                imageUrl: "assets/images/tomato.png",
-              ),
-              SizedBox(width: 12),
-              _buildProductCard(
-                title: "Whole Milk",
-                price: "₹349 / Liter",
-                imageUrl: "assets/images/milk.png",
-              ),
-              SizedBox(width: 12),
-              _buildProductCard(
-                title: "Potato",
-                price: "₹49 / Kg",
-                imageUrl: "assets/images/potato.png",
-              ),
-              SizedBox(width: 12),
-              _buildProductCard(
-                title: "Whole Milk",
-                price: "₹349 / Liter",
-                imageUrl: "assets/images/milk.png",
-              ),
+              SizedBox(height: 24),
+              Text("Featured Products", style: _sectionTitle),
+              SizedBox(height: 12),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    _buildProductCard(
+                      title: "Apple",
+                      price: "₹120 / Kg",
+                      imageUrl: "assets/images/apple.png",
+                    ),
+                    SizedBox(width: 12),
+                    _buildProductCard(
+                      title: "Organic tomato",
+                      price: "₹299 / kg",
+                      imageUrl: "assets/images/tomato.png",
+                    ),
+                    SizedBox(width: 12),
+                    _buildProductCard(
+                      title: "Whole Milk",
+                      price: "₹349 / Liter",
+                      imageUrl: "assets/images/milk.png",
+                    ),
+                    SizedBox(width: 12),
+                    _buildProductCard(
+                      title: "Potato",
+                      price: "₹49 / Kg",
+                      imageUrl: "assets/images/potato.png",
+                    ),
+                    SizedBox(width: 12),
+                    _buildProductCard(
+                      title: "Whole Milk",
+                      price: "₹349 / Liter",
+                      imageUrl: "assets/images/milk.png",
+                    ),
 
-            ],
-          ),
-        ),
+                  ],
+                ),
+              ),
 
             ],
           ),
@@ -158,6 +159,7 @@ class HomeScreen extends StatelessWidget {
   final TextStyle _sectionTitle = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
+    color:Colors.white,
   );
 
   Widget _buildSaleCard(String imageUrl, String label) {
@@ -172,7 +174,7 @@ class HomeScreen extends StatelessWidget {
             child: Image.asset(imageUrl, height: 139, width: 286, fit: BoxFit.cover),
           ),
           SizedBox(height: 6),
-          Text(label, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500)),
+          Text(label, style: TextStyle(fontSize: 18,color: Colors.white, fontWeight: FontWeight.w500)),
         ],
       ),
     );
@@ -189,7 +191,7 @@ class HomeScreen extends StatelessWidget {
             child: Image.asset(imageUrl, height: 80, width: 80, fit: BoxFit.cover),
           ),
           SizedBox(height: 12),
-          Text(label, style: TextStyle(fontSize: 15)),
+          Text(label, style: TextStyle(fontSize: 15,color: Colors.white)),
         ],
       ),
     );
@@ -203,7 +205,7 @@ class HomeScreen extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
+        border: Border.all(color: Color(0XFF595959)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -211,15 +213,16 @@ class HomeScreen extends StatelessWidget {
         children: [
           Image.asset(imageUrl, height: 60, width: 60, fit: BoxFit.cover),
           SizedBox(height: 8),
-          Text(title, style: TextStyle(fontWeight: FontWeight.w600)),
+          Text(title, style: TextStyle(fontWeight: FontWeight.w600,color: Colors.white)),
           SizedBox(height: 4),
-          Text(price, style: TextStyle(color: Color(0XFF221662))),
+          Text(price, style: TextStyle(color: Colors.white)),
           SizedBox(height: 6),
           ElevatedButton(
             onPressed: () {},
-            child: Text("Add"),
+            child: Text("Add",
+            style: TextStyle(color: Colors.white),),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0XFF221662),
+              backgroundColor: Color(0XFF353535),
               foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               minimumSize: Size(80, 36),
